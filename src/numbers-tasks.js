@@ -215,8 +215,14 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n <= 1) return false;
+  for (let j = 2; j < n; j += 1) {
+    if (n % j === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -405,8 +411,8 @@ function toPrecision(number, precision) {
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+function getNumberValue(number) {
+  return number.valueOf(Number);
 }
 
 /**
@@ -592,8 +598,9 @@ function getMaxNumber(/* firstNumber, secondNumber */) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  const n = Math.floor(Math.random() * (max - min + 1) + min);
+  return n;
 }
 
 /**

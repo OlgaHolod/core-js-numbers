@@ -195,13 +195,8 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  const degree = 10 ** pow;
-  const rounded = Math.round((num * degree) / 100);
-  const number = rounded * 10;
-  if (pow === 0) {
-    return num;
-  }
-  return number;
+  const factor = 10 ** pow;
+  return Math.round(num / factor) * factor;
 }
 
 /**
@@ -246,7 +241,10 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {}
+function toNumber(value, def) {
+  const num = Number(value);
+  return Number.isNaN(num) ? def : (num ?? def);
+}
 
 /**
  * Returns the cube of the given number.
@@ -494,8 +492,9 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  const a = parseInt(str, base);
+  return a;
 }
 
 /**
